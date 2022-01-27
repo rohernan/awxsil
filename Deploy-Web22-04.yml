@@ -1,0 +1,33 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@3
+  displayName: 'Stage Blob for Primary'
+  inputs:
+    SourcePath: '$(System.DefaultWorkingDirectory)/customscripts/'
+    azureSubscription: 'Microsoft Azure Internal Consumption IdAM20(ad1e11c4-77b4-4497-9085-b05d999376f6)'
+    Destination: 'AzureBlob'
+    storage: 'kdrcsesa'
+    ContainerName: 'customscripts'
+    outputStorageUri: 'StorageContainerUri'
+    outputStorageContainerSasToken: 'StorageContainerSas'
+  
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Microsoft Azure Internal Consumption IdAM20(ad1e11c4-77b4-4497-9085-b05d999376f6)'
+    subscriptionId: 'ad1e11c4-77b4-4497-9085-b05d999376f6'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rgKDR'
+    location: 'East US'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(System.DefaultWorkingDirectory)/Templates/kdr-web22-04/template.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/Templates/kdr-web22-04/parameters.json'
+    overrideParameters: '-_artifactsLocationSasToken $(StorageContainerSas) -_artifactsLocation $(StorageContainerUri)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'kdr-web22-04'
+  
