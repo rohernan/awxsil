@@ -1,0 +1,8 @@
+---
+  -name: Create winRM user
+   win_user:
+    name: 'winrm'
+    password: '12qwaszx!@QWASZX'
+    groups: Remote Management Users
+    update_password: no
+    password_never_expires: yes
