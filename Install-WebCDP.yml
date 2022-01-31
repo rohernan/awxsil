@@ -6,7 +6,6 @@
     state: present
     include_sub_features: yes
     include_management_tools: yes 
-  register: win_feature
 
 - name: Reboot after install
   win_reboot:
