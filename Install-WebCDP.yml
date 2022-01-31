@@ -1,5 +1,6 @@
 ---
 - name: Install IIS and Sub-Features
+  hosts: 10.15.1.14
   win_feature:
     name: Web-Server
     state: present
