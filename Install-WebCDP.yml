@@ -1,7 +1,4 @@
-#- name: Check for IIS Install
-#  win_shell: Get-WindowsFeature | Where-Object {$_.InstallState -eq "Installed"} | Select 
-
-
+---
 - name: Install IIS and Sub-Features
   win_feature:
     name: Web-Server
