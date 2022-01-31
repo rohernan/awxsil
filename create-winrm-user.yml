@@ -1,15 +1,15 @@
 ---
-  -name: Create winRM user
-    win_user:
-      name: 'winrm'
-      password: '12qwaszx!@QWASZX'
-      update_password: no
-      password_never_expires: yes
-      state: present
+  - name: Create winRM user
+      win_user:
+        name: 'winrm'
+        password: '12qwaszx!@QWASZX'
+        update_password: no
+        password_never_expires: yes
+        state: present
 
-  -name: Add to Remote Management Users
-    win_group_membership:
-      name: Remote Management Users
-      members:
-        - winrm
-      state: present
+  - name: Add to Remote Management Users
+      win_group_membership:
+        name: Remote Management Users
+        members:
+          - winrm
+        state: present
