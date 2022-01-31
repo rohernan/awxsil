@@ -1,5 +1,6 @@
 ---
   -name: Create winRM user
+   hosts: 10.15.1.14
    win_user:
     name: 'winrm'
     password: '12qwaszx!@QWASZX'
