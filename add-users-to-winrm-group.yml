@@ -1,7 +1,6 @@
----
-  - name: Add users to WinRM group
-      - win_group_membership:
-        name: Remote Management Users
-        members:
-          - xadmin
-        state: present 
+- name: Add users to WinRM group
+    - win_group_membership:
+      name: Remote Management Users
+      members:
+        - xadmin
+      state: present 
