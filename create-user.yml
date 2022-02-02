@@ -1,7 +1,4 @@
 ---
-
-tasks:
-
 - name: Add new user
   win_user:
    name: winrm
