@@ -1,6 +1,6 @@
 ---
 - name: Add new user
-  win_user:
+  ansible.builtin.win_user:
    name: winrm
    password: 12qwaszx!@QWASZX
    update_password: no
