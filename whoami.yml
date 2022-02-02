@@ -1,3 +1,4 @@
 ---
+  tasks:
   - name: test win_command
     ansible.builtin.win_command: whoami.exe
