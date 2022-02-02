@@ -1,3 +1,4 @@
+- hosts:
 - name: Add new user
   ansible.builtin.win_user:
    name: winrm
