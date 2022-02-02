@@ -1,10 +1,9 @@
 ---
-  - hosts: awxsil_web
+  hosts: 10.15.2.4
 
-    tasks:
-
+  tasks:
     - name: Create winRM user
-        win_user:
+        win_user
           name: 'winrm'
           password: '12qwaszx!@QWASZX'
           update_password: no
