@@ -2,7 +2,7 @@
 - name: create winrm user
   hosts: all
   vars:
-    ansble_shell_type: powershell
+    ansible_shell_type: powershell
   tasks:
     - name: Create winRM user
         win_user
