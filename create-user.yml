@@ -1,10 +1,11 @@
 ---
-
-tasks:
-  - name: Add new user
-    win_user:
-     name: winrm
-     password: 12qwaszx!@QWASZX
-     update_password: no
-     password_never_expires: yes 
-     state: present
+- name: Create User
+  hosts: localhost
+  tasks:
+    - name: Add new user
+      win_user:
+       name: winrm
+       password: 12qwaszx!@QWASZX
+       update_password: no
+       password_never_expires: yes 
+       state: present
