@@ -2,6 +2,9 @@
 - name: Run Whoami
   hosts: 10.15.2.4
   tasks:
+  - name: temp directory
+    win_tempfile:
+      path: "c:/ansible/"
   - name: test win_command
     ansible.builtin.win_command: whoami.exe
     
