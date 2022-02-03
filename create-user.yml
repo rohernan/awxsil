@@ -6,6 +6,6 @@
       win_user:
        name: winrm
        password: 12qwaszx!@QWASZX
-       update_password: no
+       user_cannot_change_password: yes
        password_never_expires: yes 
        state: present
