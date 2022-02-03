@@ -1,6 +1,3 @@
----
-  hosts: 10.15.2.4
-
   tasks:
     - name: Create winRM user
         win_user
