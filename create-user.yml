@@ -1,6 +1,6 @@
 ---
 - name: Create User
-  hosts: localhost
+  hosts: awxsil_web
   tasks:
     - name: Add new user
       win_user:
