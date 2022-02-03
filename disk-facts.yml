@@ -1,6 +1,8 @@
 ---
-  - name: Disk Info
+- name: Disk Info
+  hosts: 10.15.2.4
+  tasks:
+  - name: disk facts
       win_disk_facts:
-
-    debug:
-      var: ansible_facts.disks[0].size
+      debug:
+        var: ansible_facts.disks[0].size
