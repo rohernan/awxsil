@@ -1,5 +1,6 @@
-- name: Disk Info
-  win_disk_facts:
+---
+  - name: Disk Info
+      win_disk_facts:
 
-  debug:
-    var: ansible_facts.disks[0].size
+    debug:
+      var: ansible_facts.disks[0].size
