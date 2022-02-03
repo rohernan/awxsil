@@ -2,7 +2,7 @@
 - name: Run Whoami
   hosts: 10.15.2.4
   vars:
-    ansible_shell_type: powershell
+    ansible_shell_type: 'powershell'
   tasks:
   - name: temp directory
     win_tempfile:
