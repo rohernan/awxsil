@@ -1,3 +1,5 @@
+- hosts:
+  
   tasks:
     - name: Create winRM user
         win_user
