@@ -1,9 +1,7 @@
 ---
 
 tasks:
-
   - name: Add new user
-    hosts: 'ansible_hosts'
     win_user:
      name: winrm
      password: 12qwaszx!@QWASZX
