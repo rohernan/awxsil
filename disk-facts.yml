@@ -1,4 +1,4 @@
-
+- name: Disk Info
   win_disk_facts:
 
   debug:
