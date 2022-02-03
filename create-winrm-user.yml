@@ -5,7 +5,7 @@
     ansible_shell_type: powershell
   tasks:
     - name: Create winRM user
-        win_user
+        win_user:
           name: 'winrm'
           password: '12qwaszx!@QWASZX'
           user_cannot_change_password: yes
