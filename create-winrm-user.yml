@@ -1,6 +1,6 @@
 ---
 - name: create winrm user
-  hosts: 10.15.2.4
+  hosts: all
   vars:
     ansble_shell_type: powershell
   tasks:
