@@ -1,0 +1,86 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "kdr-web16-01-nic"
+        },
+        "enableAcceleratedNetworking": {
+            "value": true
+        },
+        "networkSecurityGroupName": {
+            "value": "kdr-web16-01-nsg"
+        },
+        "networkSecurityGroupRules": {
+                "value": [
+                    {
+                        "name": "HTTPS",
+                        "properties": {
+                            "priority": 300,
+                            "protocol": "TCP",
+                            "access": "Allow",
+                            "direction": "Inbound",
+                            "sourceAddressPrefix": "*",
+                            "sourcePortRange": "*",
+                            "destinationAddressPrefix": "*",
+                            "destinationPortRange": "443"
+                        }
+                    },
+                    {
+                        "name": "Allow-RDP",
+                        "properties": {
+                            "priority": 301,
+                            "protocol": "TCP",
+                            "access": "Allow",
+                            "direction": "Inbound",
+                            "sourceAddressPrefix": "*",
+                            "sourcePortRange": "*",
+                            "destinationAddressPrefix": "*",
+                            "destinationPortRange": "3389"
+                        }
+                    }
+                ]
+            },
+        "subnetName": {
+            "value": "server"
+        },
+        "virtualNetworkName": {
+            "value": "kdr-vnet"
+        },
+        "virtualMachineName": {
+            "value": "kdr-web16-01"
+        },
+        "virtualMachineComputerName": {
+            "value": "kdr-web16-01"
+        },
+        "virtualMachineRG": {
+            "value": "rgKDR"
+        },
+        "osDiskType": {
+            "value": "StandardSSD_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "xadmin"
+        },
+        "adminPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/ad1e11c4-77b4-4497-9085-b05d999376f6/resourceGroups/rgKDR/providers/Microsoft.KeyVault/vaults/kdr-kv01"
+                },
+                "secretName": "xadmin"
+            }
+        },
+        "patchMode": {
+            "value": "AutomaticByOS"
+        },
+        "enableHotpatching": {
+            "value": false
+        }
+    }
+}
