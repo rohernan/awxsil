@@ -1,8 +1,10 @@
 ---
 - name: Disk Info
   hosts: all
+  vars:
+   ansible_shell_type: powershell
   tasks:
   - name: disk facts
-      win_disk_facts:
-      debug:
-        var: ansible_facts.disks[0].size
+    win_disk_facts:
+     debug:
+     var: ansible_facts.disks[0].size
