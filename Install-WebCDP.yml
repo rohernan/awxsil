@@ -3,11 +3,13 @@
   vars:
    ansible_shell_type: powershell
   hosts: all
-  win_feature:
-   name: Web-Server
-   state: present
-   include_sub_features: yes
-   include_management_tools: yes 
+  tasks:
+  - name: Install Web-Server
+    win_feature:
+     name: Web-Server
+     state: present
+     include_sub_features: yes
+     include_management_tools: yes 
 
 - name: Reboot after install
   win_reboot:
