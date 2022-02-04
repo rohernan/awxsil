@@ -1,0 +1,20 @@
+---
+- name: create winrm user
+  hosts: all
+  vars:
+    ansible_shell_type: powershell
+  tasks:
+    - name: Create winRM user
+      win_user:
+       name: 'winrm'
+       password: '12qwaszx!@QWASZX'
+       user_cannot_change_password: yes
+       password_never_expires: yes
+       state: present
+
+    - name: Add to Remote Management Users
+      win_group_membership:
+       name: Remote Management Users
+       members:
+        - winrm
+       state: present
