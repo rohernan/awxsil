@@ -48,4 +48,40 @@
      include_management_tools: yes
     register: net45_install
 
-  - name: 
+  - name: Remove Default Site
+    win_dsc:
+     resource_name: xWebsite
+     state: absent
+     name: 'Default Web Site'
+
+  - name: Create CRLDP
+    win_dsc:
+     resource_name: xWebsite
+     state: started
+     name: crldp
+     path: c:\crldp
+     ensure: present
+     bindinginfo:
+     - Protocol: http
+       port: 80
+       ipaddress: '*'
+     authenticationinfo:
+      anonymous: yes
+      basic: no
+      digest: no
+      windows: no
+
+  - name: CRLDP Browse
+    win_dsc:
+     resource_name: xWebConfigProperty
+     ensure: present
+     filter: 'system.webServer/directoryBrowse'
+     propertyname: enabled
+     value: true
+
+  - name: Hide web.config
+    win_dsc:
+     resource_name: file
+     ensure: present
+     destinationpath: c:\crldp\web.config
+     attributes: hidden
