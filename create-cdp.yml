@@ -23,6 +23,7 @@
     win_dsc:
      resource_name: File
      DestinationPath: C:\crldp
+     type: directory
 
   - name: Create CRLDP SMB Share
     win_share:
