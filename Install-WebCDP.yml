@@ -14,4 +14,3 @@
 
   - name: Reboot after install
     win_reboot:
-     when: iis_install.reboot_required

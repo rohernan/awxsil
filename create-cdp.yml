@@ -1,0 +1,51 @@
+---
+- name: Install Dsc Modules
+  hosts: all
+  vars:
+   ansible_shell_type: powershell
+  tasks:
+  - name: Install PSDesiredStateConfiguration
+    win_psmodule:
+     name: PSDesiredStateConfiguration
+     state: present
+  
+  - name: Install xWebAdministration
+    win_psmodule:
+     name: xWebAdministration
+     state: present
+
+  - name: Install ComputerManagementDsc
+    win_psmodule:
+     name: ComputerManagementDsc
+     state: present
+
+  - name: Create CRLDP Folder
+    win_dsc:
+     resource_name: File
+     DestinationPath: C:\crldp
+
+  - name: Create CRLDP SMB Share
+    win_share:
+     name: CRLDP
+     path: c:\crldp
+     list: yes
+     full: Administrators
+     read: everyone
+
+  - name: Install Web-Server
+    win_feature:
+     name: Web-Server
+     state: present
+     include_sub_features: yes
+     include_management_tools: yes 
+    register: iis_install
+
+  - name: Install .NET45
+    win_feature:
+     name: Web-Asp-Net45
+     state: present
+     include_sub_features: yes
+     include_management_tools: yes
+    register: net45_install
+
+  - name: 
