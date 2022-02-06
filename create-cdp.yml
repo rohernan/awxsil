@@ -76,7 +76,7 @@
   - name: CRLDP Browse
     win_dsc:
      resource_name: xWebConfigProperty
-     websitepath: c:\crldp
+     physicalpath: c:\crldp
      ensure: present
      filter: 'system.webServer/directoryBrowse'
      propertyname: enabled
@@ -86,5 +86,5 @@
     win_dsc:
      resource_name: file
      ensure: present
-     destinationpath: c:\crldp\web.config
+     path: c:\crldp\web.config
      attributes: hidden
