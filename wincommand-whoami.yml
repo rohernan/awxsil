@@ -1,12 +1,11 @@
 ---
 - name: Run Whoami
-  hosts: 10.15.2.4
+  hosts: all
   vars:
    ansible_shell_type: powershell
   tasks:
-  - name: temp directory
-    win_tempfile:
-      path: "c:/ansible/"
+
   - name: test win_command
     ansible.builtin.win_command: whoami.exe
+    become: yes
     
