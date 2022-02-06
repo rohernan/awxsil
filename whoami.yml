@@ -1,0 +1,12 @@
+---
+- name: check become
+  hosts: all
+  vars:
+   ansible_shell_type: powershell
+  gather_facts: yes
+
+  tasks:
+
+  - win_whoami:
+    become: yes
+    become_user: xadmin
