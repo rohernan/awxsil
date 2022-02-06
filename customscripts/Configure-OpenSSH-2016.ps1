@@ -29,3 +29,8 @@
     Start-Service sshd
 
     Start-Service ssh-agent
+
+#Set Default Shell to PowerShell
+
+    New-ItemProperty -Path HKLM:\SOFTWARE\OpenSSH -Name DefaultShell -Value "C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe" -PropertyType String -Force
+
