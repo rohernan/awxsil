@@ -52,8 +52,9 @@
   - name: Remove Default Site
     win_dsc:
      resource_name: xWebsite
-     state: absent
+     state: stopped
      name: 'Default Web Site'
+     ensure: absent
 
   - name: Create CRLDP
     win_dsc:
