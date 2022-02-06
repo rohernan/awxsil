@@ -9,4 +9,4 @@
 
   - win_whoami:
     become: yes
-    become_user: xadmin
+    become_user: SYSTEM
