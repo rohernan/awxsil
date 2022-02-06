@@ -88,3 +88,24 @@
      ensure: present
      destinationpath: c:\crldp\web.config
      attributes: hidden
+
+  - name: copy initial crls
+    win_shell: |
+     $crl1 = "http://crldp.kdrodemo.com/kdemo-RootCA(1).crl"
+     $crl1output = "kdemo-RootCA(1).crl"
+     $cert2 = "http://crldp.kdrodemo.com/kdemo-ca01.kdr-demo.com_kdemo-RootCA(0-1).crt"
+     $cert2output = "kdemo-ca01.kdr-demo.com_kdemo-RootCA(0-1).crt"
+     $cert3 = "http://crldp.kdrodemo.com/kdemo-ca01.kdr-demo.com_kdemo-RootCA(1-0).crt"
+     $cert3output = "kdemo-ca01.kdr-demo.com_kdemo-RootCA(1-0).crt"
+     $cert4 = "http://crldp.kdrodemo.com/kdemo-ca01.kdr-demo.com_kdemo-RootCA(1).crt"
+     $cert4output = "kdemo-ca01.kdr-demo.com_kdemo_RootCA(1).crt"
+     $cert5 = "http://crldp.kdrodemo.com/kdemo-ca03.kdr-demo.com_kdemo-SubCA.crt"
+     $cert5output = "kdemo-ca03.kdr-demo.com_kdemo-SubCA.crt"
+     $crl3 = "http://crldp.kdrodemo.com/kdemo-SubCA.crl"
+     $crl3output = "kdemo-SubCA.crl"
+     Invoke-WebRequest -Uri $crl1 -OutFile c:\crldp\$crl1output
+     Invoke-WebRequest -Uri $cert2 -OutFile c:\crldp\$cert2output
+     Invoke-WebRequest -Uri $cert3 -OutFile c:\crldp\$cert3output
+     Invoke-WebRequest -Uri $cert4 -OutFile c:\crldp\$cert4output
+     Invoke-WebRequest -Uri $cert5 -OutFile c:\crldp\$cert5output
+     Invoke-WebRequest -Uri $crl3 -OutFile c:\crldp\$crl3output
