@@ -76,4 +76,4 @@ sudo Reboot
 
     adcli info kdr-demo.com 
 
-    adcli join kdr-demo.com 
+    adcli join kdr-demo.com --login-user=xadmin
