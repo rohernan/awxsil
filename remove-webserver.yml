@@ -12,6 +12,11 @@
      include_management_features: yes
     register: iis_uninstall
 
+  - name: Delete CRLDP
+    win_file:
+     path: c:\crldp
+     state: absent
+
   - name: Reboot after complete
     win_reboot:
     when: iis_uninstall.reboot_required
