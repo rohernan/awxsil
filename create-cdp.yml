@@ -61,7 +61,7 @@
      resource_name: xWebsite
      state: started
      name: crldp
-     path: c:\crldp
+     physicalpath: c:\crldp
      ensure: present
      bindinginfo:
      - Protocol: http
