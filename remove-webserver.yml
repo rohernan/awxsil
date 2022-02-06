@@ -1,0 +1,17 @@
+---
+- name: Remove Web-Server
+  hosts: all
+  vars:
+   ansible_shell_type: powershell
+  tasks:
+
+  - name: Remove Web-Server Feature
+    win_feature:
+     name: web-server
+     state: absent
+     include_management_features: yes
+    register: iis_uninstall
+
+  - name: Reboot after complete
+    win_reboot:
+    when: iis_uninstall.reboot_required
