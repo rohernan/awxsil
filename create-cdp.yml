@@ -76,7 +76,7 @@
   - name: CRLDP Browse
     win_dsc:
      resource_name: xWebConfigProperty
-     physicalpath: c:\crldp
+     websitepath: iis:\sites\crldp
      ensure: present
      filter: 'system.webServer/directoryBrowse'
      propertyname: enabled
