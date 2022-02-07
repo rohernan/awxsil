@@ -3,10 +3,10 @@
   hosts: all
   vars:
    ansible_shell_type: powershell
-   ansible_become: yes
-   ansible_become_method: runas
-   ansible_become_user: xadmin
-   ansible_become_flags: logon_type=batch logon_flags=
+   #ansible_become: yes
+   #ansible_become_method: runas
+   #ansible_become_user: xadmin
+   #ansible_become_flags: logon_type=batch logon_flags=
   gather_facts: yes
 
   tasks:
