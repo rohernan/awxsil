@@ -1,0 +1,19 @@
+---
+- name: Check Domain Controller Configurations
+  hosts: all
+  vars:
+   ansible_shell_type: powershell
+
+  tasks:
+
+  - name: Install ActiveDirectoryDsc
+    win_psmodule:
+     name: ActiveDirectoryDsc
+     state: present
+
+  - name: Install DnsServerDsc
+    win_psmodule:
+     name: DnsServerDsc
+     state: present
+
+  
