@@ -108,7 +108,7 @@ sudo Reboot
 
     import winrm 
 
-    s= winrm.Session('https://<host>:5986',auth=('xadmin','12qwaszx!@QWASZX'),transport='ntlm')
+    s= winrm.Session('https://<host>:5986',auth=('xadmin',',<pwd>'),transport='ntlm')
 
     r = s.run_cmd('ipconfig')
 
