@@ -1,0 +1,20 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20220113174542
+Username: NA\colby.dibble.adm
+RunAs User: NA\colby.dibble.adm
+Configuration Name: 
+Machine: SOS26-PC07 (Microsoft Windows NT 6.2.9200.0)
+Host Application: C:\tasks\Toast\ToastNotification.exe
+Process ID: 4188
+PSVersion: 5.1.17763.1490
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17763.1490
+BuildVersion: 10.0.17763.1490
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PS>ParameterBinding(Out-String): name="InputObject"; value="Transcript started, output file is C:\log\ToastLog-202201DD-174542.log"
+Transcript started, output file is C:\log\ToastLog-202201DD-174542.log

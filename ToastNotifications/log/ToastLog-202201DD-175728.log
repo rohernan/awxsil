@@ -1,0 +1,23 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20220113175728
+Username: NA\roland.hernandez.adm
+RunAs User: NA\roland.hernandez.adm
+Configuration Name: 
+Machine: SOS26-PC07 (Microsoft Windows NT 10.0.17763.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell_ise.exe
+Process ID: 9244
+PSVersion: 5.1.17763.1490
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17763.1490
+BuildVersion: 10.0.17763.1490
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\log\ToastLog-202201DD-175728.log
+**********************
+Windows PowerShell transcript end
+End time: 20220113175729
+**********************
