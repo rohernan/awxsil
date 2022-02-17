@@ -38,7 +38,7 @@
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
      name: Enabled
-     value: 1
+     value: '1'
      type: Dword
      state: present
      
@@ -46,7 +46,7 @@
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
      name: DisabledByDefault
-     value: 0
+     value: '0'
      type: Dword
      state: present
 
@@ -54,16 +54,17 @@
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server
      name: Enabled
-     value: 1
+     value: '1'
      type: Dword
      state: present
 
   - name: Configure DNS Server Forwarders
     win_dsc:
      resource_name: DnsServerForwarder
+     issingleinstance: yes
      ipaddresses: 10.1.5.7, 10.5.1.4, 8.8.8.8, 1.1.1.1
-     userroothint: no
-     state: present
+     useroothint: no
+     dependson: '[WindowsFeature]Dns'
 
   - name: Configure DNS Forward Zones
     win_dsc:
