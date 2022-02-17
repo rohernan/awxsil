@@ -65,6 +65,7 @@
      ipaddresses: '10.1.5.7, 10.5.1.4, 8.8.8.8, 1.1.1.1'
      useroothint: 'no'
      dependson: '[WindowsFeature]Dns'
+     ensure: present
 
   - name: Configure DNS Forward Zones
     win_dsc:
@@ -72,7 +73,9 @@
      name: 'ocsp.defkdrodemo.com'
      dynamicupdate: 'NonSecureAndSecure'
      replicationscope: 'Forest'
-     state: present
+     dependson: '[WindowsFeature]Dns'
+     ensure: present
+     
 
   - name: Add entry in DNS Zone
     win_dns_record:
