@@ -79,9 +79,9 @@
   - name: Add entry in DNS Zone
     win_dns_record:
      zone: "ocsp.defkdrodemo.com"
-     name: "10.10.1.6"
-     type: "PTR"
-     value: "*"
+     name: "*"
+     type: "A"
+     value: "10.10.1.6"
      state: present
 
      
