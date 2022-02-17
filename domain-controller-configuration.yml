@@ -84,6 +84,15 @@
      value: "10.10.1.6"
      state: present
 
+  - name: Add Conditional Forwarder
+    win_dsc:
+     resource_name: DnsServerConditionalForwarder
+     name: 'kdrodemo.com'
+     masterservers: '10.5.10.7,10.5.10.4'
+     replicationscope: 'Forest'
+     dependson: '[WindowsFeature]Dns'
+     ensure: present
+
      
   
 
