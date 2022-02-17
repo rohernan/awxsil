@@ -10,9 +10,9 @@
      name: ActiveDirectoryDsc
      state: present
 
-  - name: Install ActiveDirectoryCDsc
+  - name: Install ActiveDirectoryCSDsc
     win_psmodule:
-     name: ActiveDirectoryCDsc
+     name: ActiveDirectoryCSDsc
 
   - name: Install ComputerManagementDsc
     win_psmodule:
