@@ -30,12 +30,6 @@
      name: NetworkingDsc
      state: absent
 
-  - name: Remove PSDesiredStateConfiguration
-    win_psmodule:
-     name: PSDesiredStateConfiguration
-     state: absent
-
-
   - name: Enable TLS 1.2 Registry - Enabled
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
