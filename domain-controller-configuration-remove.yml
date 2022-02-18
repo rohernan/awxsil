@@ -5,32 +5,32 @@
    ansible_shell_type: powershell
 
   tasks:
-  - name: Install ActiveDirectoryDsc
+  - name: Remove ActiveDirectoryDsc
     win_psmodule:
      name: ActiveDirectoryDsc
      state: absent
 
-  - name: Install ActiveDirectoryCSDsc
+  - name: Remove ActiveDirectoryCSDsc
     win_psmodule:
      name: ActiveDirectoryCSDsc
      state: absent
 
-  - name: Install ComputerManagementDsc
+  - name: Remove ComputerManagementDsc
     win_psmodule:
      name: ComputerManagementDsc
      state: absent
 
-  - name: Install DnsServerDsc
+  - name: Remove DnsServerDsc
     win_psmodule:
      name: DnsServerDsc
      state: absent
 
-  - name: Install NetworkingDsc
+  - name: Remove NetworkingDsc
     win_psmodule:
      name: NetworkingDsc
      state: absent
 
-  - name: Install PSDesiredStateConfiguration
+  - name: Remove PSDesiredStateConfiguration
     win_psmodule:
      name: PSDesiredStateConfiguration
      state: absent
