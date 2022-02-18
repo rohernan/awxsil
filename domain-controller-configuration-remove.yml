@@ -5,31 +5,6 @@
    ansible_shell_type: powershell
 
   tasks:
-  - name: Remove ActiveDirectoryDsc
-    win_psmodule:
-     name: ActiveDirectoryDsc
-     state: absent
-
-  - name: Remove ActiveDirectoryCSDsc
-    win_psmodule:
-     name: ActiveDirectoryCSDsc
-     state: absent
-
-  - name: Remove ComputerManagementDsc
-    win_psmodule:
-     name: ComputerManagementDsc
-     state: absent
-
-  - name: Remove DnsServerDsc
-    win_psmodule:
-     name: DnsServerDsc
-     state: absent
-
-  - name: Remove NetworkingDsc
-    win_psmodule:
-     name: NetworkingDsc
-     state: absent
-
   - name: Enable TLS 1.2 Registry - Enabled
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
@@ -63,7 +38,6 @@
      dependson: '[WindowsFeature]Dns'
      ensure: absent
      
-
   - name: Add entry in DNS Zone
     win_dns_record:
      zone: "ocsp.defkdrodemo.com"
@@ -81,6 +55,30 @@
      dependson: '[WindowsFeature]Dns'
      ensure: absent
 
+    - name: Remove ActiveDirectoryDsc
+    win_psmodule:
+     name: ActiveDirectoryDsc
+     state: absent
+
+  - name: Remove ActiveDirectoryCSDsc
+    win_psmodule:
+     name: ActiveDirectoryCSDsc
+     state: absent
+
+  - name: Remove ComputerManagementDsc
+    win_psmodule:
+     name: ComputerManagementDsc
+     state: absent
+
+  - name: Remove DnsServerDsc
+    win_psmodule:
+     name: DnsServerDsc
+     state: absent
+
+  - name: Remove NetworkingDsc
+    win_psmodule:
+     name: NetworkingDsc
+     state: absent
      
   
 
