@@ -54,14 +54,6 @@
      type: Dword
      state: absent
 
-  - name: Configure DNS Server Forwarders
-    win_dsc:
-     resource_name: DnsServerForwarder
-     issingleinstance: 'yes'
-     ipaddresses: '10.1.5.7, 10.5.1.4, 8.8.8.8, 1.1.1.1'
-     useroothint: 'no'
-     dependson: '[WindowsFeature]Dns'
-
   - name: Configure DNS AD-integrated Forward Zone
     win_dsc:
      resource_name: DnsServerADZone
