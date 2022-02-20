@@ -55,7 +55,7 @@
      dependson: '[WindowsFeature]Dns'
      ensure: absent
 
-    - name: Remove ActiveDirectoryDsc
+  - name: Remove ActiveDirectoryDsc
     win_psmodule:
      name: ActiveDirectoryDsc
      state: absent
