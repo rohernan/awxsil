@@ -38,14 +38,6 @@
      dependson: '[WindowsFeature]Dns'
      ensure: absent
      
-  - name: Add entry in DNS Zone
-    win_dns_record:
-     zone: "ocsp.defkdrodemo.com"
-     name: "*"
-     type: "A"
-     value: "10.10.1.6"
-     state: absent
-
   - name: Add Conditional Forwarder
     win_dsc:
      resource_name: DnsServerConditionalForwarder
