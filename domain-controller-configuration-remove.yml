@@ -5,42 +5,13 @@
    ansible_shell_type: powershell
 
   tasks:
-  - name: Install ActiveDirectoryDsc
-    win_psmodule:
-     name: ActiveDirectoryDsc
-     state: present
-
-  - name: Install ActiveDirectoryCSDsc
-    win_psmodule:
-     name: ActiveDirectoryCSDsc
-
-  - name: Install ComputerManagementDsc
-    win_psmodule:
-     name: ComputerManagementDsc
-
-  - name: Install DnsServerDsc
-    win_psmodule:
-     name: DnsServerDsc
-     state: present
-
-  - name: Install NetworkingDsc
-    win_psmodule:
-     name: NetworkingDsc
-     state: present
-
-  - name: Install PSDesiredStateConfiguration
-    win_psmodule:
-     name: PSDesiredStateConfiguration
-     state: present
-
-
   - name: Enable TLS 1.2 Registry - Enabled
     win_regedit:
      path: HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client
      name: Enabled
      data: 1
      type: Dword
-     state: present
+     state: absent
      
   - name: Disable TLS 1.2 Registry - DisabledByDefault
     win_regedit:
@@ -48,7 +19,7 @@
      name: DisabledByDefault
      data: 0
      type: Dword
-     state: present
+     state: absent
 
   - name: Enable TLS 1.2 Registry - Enabled
     win_regedit:
@@ -56,34 +27,17 @@
      name: Enabled
      data: 1
      type: Dword
-     state: present
+     state: absent
 
-  - name: Configure DNS Server Forwarders
-    win_dsc:
-     resource_name: DnsServerForwarder
-     issingleinstance: 'yes'
-     ipaddresses: '10.1.5.7, 10.5.1.4, 8.8.8.8, 1.1.1.1'
-     useroothint: 'no'
-     dependson: '[WindowsFeature]Dns'
-
-  - name: Configure DNS Forward Zones
+  - name: Configure DNS AD-integrated Forward Zone
     win_dsc:
      resource_name: DnsServerADZone
      name: 'ocsp.defkdrodemo.com'
      dynamicupdate: 'NonSecureAndSecure'
      replicationscope: 'Forest'
      dependson: '[WindowsFeature]Dns'
-     ensure: present
+     ensure: absent
      
-
-  - name: Add entry in DNS Zone
-    win_dns_record:
-     zone: "ocsp.defkdrodemo.com"
-     name: "*"
-     type: "A"
-     value: "10.10.1.6"
-     state: present
-
   - name: Add Conditional Forwarder
     win_dsc:
      resource_name: DnsServerConditionalForwarder
@@ -91,8 +45,32 @@
      masterservers: '10.5.10.7,10.5.10.4'
      replicationscope: 'Forest'
      dependson: '[WindowsFeature]Dns'
-     ensure: present
+     ensure: absent
 
+  - name: Remove ActiveDirectoryDsc
+    win_psmodule:
+     name: ActiveDirectoryDsc
+     state: absent
+
+  - name: Remove ActiveDirectoryCSDsc
+    win_psmodule:
+     name: ActiveDirectoryCSDsc
+     state: absent
+
+  - name: Remove ComputerManagementDsc
+    win_psmodule:
+     name: ComputerManagementDsc
+     state: absent
+
+  - name: Remove DnsServerDsc
+    win_psmodule:
+     name: DnsServerDsc
+     state: absent
+
+  - name: Remove NetworkingDsc
+    win_psmodule:
+     name: NetworkingDsc
+     state: absent
      
   
 

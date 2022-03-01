@@ -133,6 +133,85 @@ sudo Reboot
 
     yum install adcli sssd authconfig oddjob oddjob-mkhomedir samba-common-tools krb5-workstation
 
+    yum install krb5-workstation
+
+    yum install krb5-devel 
+
+    yum install krb5-libs
+
     adcli info kdr-demo.com 
 
     adcli join kdr-demo.com --login-user=xadmin
+
+    #Review kerb5 keytab file
+    klist -kte
+
+    #Update krb5.conf file
+    nano /etc/krb5.conf 
+
+    includedir /etc/krb5.conf.d/
+
+    [logging]
+     default = FILE:/var/log/krb5libs.log 
+     kdc = FILE:/var/log/krb5kdc.log 
+     admin_server = FILE:/var/log/kadmin.log 
+
+    [libdefaults]
+     dns_lookup_realm = false
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+     rdns = false 
+     pkinit_anchors = FILE:/etc/pki/tls/certs/ca-bundle.crt 
+     default_realm = defkdrodemo.com 
+     default_ccache_name = KEYRING:persistent:%{uid}
+
+    [realms]
+     defkdrodemo.com = {
+         kdc = txtdc01.defkdrodemo.com 
+         admin_server = txtdc01.defkdrodemo.com 
+     }
+
+    [domain_realm]
+     .defkdrodemo.com = defkdrodemo.com
+     defkdrodemo.com = defkdrodemo.com 
+
+    #Update NSS and PAM objects
+    authconfig --enablesssd --enablesssdauth --enablelocauthorize --enablemkhomedir --update
+
+    #Enable and restart oddjob daemon service
+    systemctl enable --now oddjobd.service 
+
+    #Check NSS and PAM configs
+    grep /etc/nsswitch.conf
+
+    grep /etc/pam.d/*
+
+    #Create sssd.conf file and configurations
+    nano /etc/sssd/sssd.conf
+
+    [sssd]
+    services = nss, pam
+    config_file_version = 2
+    domains = defkdrodemo.com 
+
+    [domain/defkdrodemo.com]
+    id_provider = ad
+    override_homedir = /home/%d/%u 
+    debug_level = 0
+    ldap_sasl_authid = SHORT_HOSTNAME$
+
+    [nss]
+    override_shell=/bin/bash 
+
+    [pam]
+
+    #Update permissions
+    chown root:root /etc/sssd/sssd.conf 
+    chmod 600 /etc/sssd/sssd.conf
+
+    ls -l /etc/sssd/sssd.conf
+
+    #Enable and restart the sssd service
+    systemctl enable sssd 
+    systemctl restart sssd
