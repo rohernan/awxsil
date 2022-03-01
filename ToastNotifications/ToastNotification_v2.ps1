@@ -2,7 +2,7 @@
 
     $sender = "53rd Wing"
     $attribution = ""
-    $message = "Note: There will be a SharePoint outage on February 6, 2022"
+    $message = "Note: There will be a SharePoint outage on February 19, 2022"
     $logFile = "C:\log\ToastLog-" + (Get-Date -Format 'yyyyMMDD-HHmmss') + ".log"
 
 #############################
@@ -17,7 +17,7 @@ Function New-ToastNotification{
 
         $audioSource = "ms-winsoundevent:Notification.Default"
         $headerFormat = "ImageAndTitle" #Options are "TitleOnly", "ImageOnly" or "ImageAndTitle"
-        $base64Image = Get-Content D:\OneDrive\ADO\53rd\53w.txt
+        $base64Image = Get-Content D:\OneDrive\ADO\awxsil\ToastNotifications\53w.txt
 
     #Create Image file from base64String and store in user temp
 
@@ -84,6 +84,6 @@ Function New-ToastNotification{
 
 }
 
-New-ToastNotification -sender $sender -Message -$message -attribution $attribution
+New-ToastNotification -sender $sender -Message $message -attribution $attribution
 
 Stop-Transcript
