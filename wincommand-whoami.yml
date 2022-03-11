@@ -8,4 +8,6 @@
   - name: test win_command
     ansible.builtin.win_command: whoami.exe
     become: yes
+    become_user: winrm
+    
     
