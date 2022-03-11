@@ -139,6 +139,8 @@ sudo Reboot
 
     yum install krb5-libs
 
+    yum -y install gcc python-devel
+
     adcli info kdr-demo.com 
 
     adcli join kdr-demo.com --login-user=xadmin
